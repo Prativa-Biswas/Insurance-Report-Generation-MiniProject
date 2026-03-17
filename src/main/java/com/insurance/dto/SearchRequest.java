@@ -1,17 +1,16 @@
 package com.insurance.dto;
 
-import java.time.LocalDate;
 
 import lombok.Data;
 
 @Data
-public class SearchRquest {
+public class SearchRequest {
 
 	private String planName;
 	private String planStatus;
 	private String gender;
-	private LocalDate startDate;
-	private LocalDate endDate;
+	private String startDate;
+	private String endDate;
 
 	
 }

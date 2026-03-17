@@ -7,24 +7,19 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.stereotype.Component;
-
-import com.insurance.dto.SearchRquest;
 import com.insurance.entity.CitizenInsurancePlan;
 import com.insurance.repository.CitizenInsuranceRepository;
-import com.insurance.service.CitizenPlanService;
 
 @Component
 public class DataLoader implements CommandLineRunner {
 
 	@Autowired
 	private CitizenInsuranceRepository repo;
-	@Autowired
-	private CitizenPlanService service;
 
 	@Override
 	public void run(String... args) throws Exception {
 
-		// deleting existing datavv to avoid duplicate data insertion
+		// deleting existing data to avoid duplicate data insertion
 		 repo.deleteAll();
 		// cash type data
 		CitizenInsurancePlan c1 = new CitizenInsurancePlan();
@@ -190,19 +185,11 @@ public class DataLoader implements CommandLineRunner {
 		c16.setEndDate(LocalDate.now().plusMonths(4));
 		c16.setBenefitAmount(5550);
 		
-		List<CitizenInsurancePlan> list = Arrays.asList(c1, c2, c3, c4, c5, c6, c7, c8, c9, c10, c12, c13, c14, c15,
+		List<CitizenInsurancePlan> list = Arrays.asList(c1, c2, c3, c4, c5, c6, c7, c8, c9, c10,c11, c12, c13, c14, c15,
 				c16);
 		
 		repo.saveAll(list);
 
-		service.getAllUniquePlanName().forEach(System.out::println);
-		service.getAllUniquePlanStatus().forEach(System.out::println);
-		
-		SearchRquest req= new SearchRquest();
-		req.setPlanName("Cash");
-		req.setPlanStatus("Approved");
-
-		service.getAllCitizenRecord(req).forEach(System.out::println);
 	}
 
 }
