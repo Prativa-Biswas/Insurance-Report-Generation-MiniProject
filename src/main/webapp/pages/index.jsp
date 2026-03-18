@@ -112,7 +112,7 @@
       </table>   
    <hr/>
    
-   <p>Export <a href=""> Excel</a> &nbsp; &nbsp; <a href=""> PDF</a> </p>
+   <p>Export <a href="/citizen/excel"> Excel</a> &nbsp; &nbsp; <a href="/citizen/pdf"> PDF</a> </p>
    
   </div>
   

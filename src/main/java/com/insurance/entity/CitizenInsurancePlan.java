@@ -24,7 +24,7 @@ public class CitizenInsurancePlan {
 	private String planStatus;
 	private LocalDate startDate; 
 	private LocalDate endDate;
-	private Integer benefitAmount;
+	private Double benefitAmount;
 	private String denialReason;
 	private String terminationReason;
 	private LocalDate termintionDate;
