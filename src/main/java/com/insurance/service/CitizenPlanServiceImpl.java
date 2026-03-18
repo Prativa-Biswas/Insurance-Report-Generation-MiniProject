@@ -28,6 +28,7 @@ public class CitizenPlanServiceImpl implements CitizenPlanService {
 		return citizenRepo.getPlanSatus();
 	}
 
+	
 	@Override
 	public List<CitizenInsurancePlan> getAllCitizenRecord(SearchRequest req) {
 
@@ -46,7 +47,7 @@ public class CitizenPlanServiceImpl implements CitizenPlanService {
 		}
 		
 			if(req.getStartDate()!=null && !req.getStartDate().isBlank()) {
-				
+				// Converting String Input data to Date Format
 				 DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
 			        LocalDate localDate = LocalDate.parse(req.getStartDate(), formatter);
 				
@@ -55,7 +56,7 @@ public class CitizenPlanServiceImpl implements CitizenPlanService {
 			
 			
 			if(req.getEndDate()!=null && !req.getEndDate().isBlank()) {
-				
+				// Converting String Input data to Date Format
 				 DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
 			        LocalDate localDate = LocalDate.parse(req.getEndDate(), formatter);
 				
