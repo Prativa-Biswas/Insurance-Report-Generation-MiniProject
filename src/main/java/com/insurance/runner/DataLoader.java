@@ -30,7 +30,6 @@ public class DataLoader implements CommandLineRunner {
 		c1.setPlanStatus("Approved");
 		c1.setStartDate(LocalDate.now());
 		c1.setEndDate(LocalDate.now().plusMonths(6));
-		c1.setBenefitAmount(5000);
 		
 		CitizenInsurancePlan c2 = new CitizenInsurancePlan();
 		c2.setCitizenName("Smith");
@@ -48,7 +47,7 @@ public class DataLoader implements CommandLineRunner {
 		c3.setPlanStatus("Terminated");
 		c3.setStartDate(LocalDate.now().minusMonths(4));
 		c3.setEndDate(LocalDate.now().plusMonths(6));
-		c3.setBenefitAmount(5000);
+		c3.setBenefitAmount(5000D);
 		c3.setTerminationReason("Got employed");
 		c3.setTermintionDate(LocalDate.now());
 		
@@ -60,7 +59,7 @@ public class DataLoader implements CommandLineRunner {
 		c4.setPlanStatus("Approved");
 		c4.setStartDate(LocalDate.now().minusMonths(2));
 		c4.setEndDate(LocalDate.now().plusMonths(4));
-		c4.setBenefitAmount(6000);
+		c4.setBenefitAmount(6000D);
 		
 		// Food type data
 		CitizenInsurancePlan c5 = new CitizenInsurancePlan();
@@ -71,7 +70,7 @@ public class DataLoader implements CommandLineRunner {
 		c5.setPlanStatus("Approved");
 		c5.setStartDate(LocalDate.now());
 		c5.setEndDate(LocalDate.now().plusMonths(6));
-		c5.setBenefitAmount(4000);
+		c5.setBenefitAmount(4000D);
 		
 		CitizenInsurancePlan c6 = new CitizenInsurancePlan();
 		c6.setCitizenName("Harshi");
@@ -89,7 +88,7 @@ public class DataLoader implements CommandLineRunner {
 		c7.setPlanStatus("Terminated");
 		c7.setStartDate(LocalDate.now().minusMonths(4));
 		c7.setEndDate(LocalDate.now().plusMonths(6));
-		c7.setBenefitAmount(5000);
+		c7.setBenefitAmount(5000D);
 		c7.setTerminationReason("Got employed");
 		c7.setTermintionDate(LocalDate.now());
 		
@@ -101,7 +100,7 @@ public class DataLoader implements CommandLineRunner {
 		c8.setPlanStatus("Approved");
 		c8.setStartDate(LocalDate.now().minusMonths(2));
 		c8.setEndDate(LocalDate.now().plusMonths(4));
-		c8.setBenefitAmount(5500);
+		c8.setBenefitAmount(5500D);
 		
 		// Medical type data
 		CitizenInsurancePlan c9 = new CitizenInsurancePlan();
@@ -112,7 +111,7 @@ public class DataLoader implements CommandLineRunner {
 		c9.setPlanStatus("Approved");
 		c9.setStartDate(LocalDate.now());
 		c9.setEndDate(LocalDate.now().plusMonths(6));
-		c9.setBenefitAmount(4000);
+		c9.setBenefitAmount(4000D);
 		
 		CitizenInsurancePlan c10 = new CitizenInsurancePlan();
 		c10.setCitizenName("Jayant");
@@ -130,7 +129,7 @@ public class DataLoader implements CommandLineRunner {
 		c11.setPlanStatus("Terminated");
 		c11.setStartDate(LocalDate.now().minusMonths(4));
 		c11.setEndDate(LocalDate.now().plusMonths(6));
-		c11.setBenefitAmount(5000);
+		c11.setBenefitAmount(5000D);
 		c11.setTerminationReason("Got employed");
 		c11.setTermintionDate(LocalDate.now());
 		
@@ -142,7 +141,7 @@ public class DataLoader implements CommandLineRunner {
 		c12.setPlanStatus("Approved");
 		c12.setStartDate(LocalDate.now().minusMonths(2));
 		c12.setEndDate(LocalDate.now().plusMonths(4));
-		c12.setBenefitAmount(5550);
+		c12.setBenefitAmount(5550D);
 		
 		// Medical type data
 		CitizenInsurancePlan c13 = new CitizenInsurancePlan();
@@ -153,7 +152,7 @@ public class DataLoader implements CommandLineRunner {
 		c13.setPlanStatus("Approved");
 		c13.setStartDate(LocalDate.now());
 		c13.setEndDate(LocalDate.now().plusMonths(6));
-		c13.setBenefitAmount(4000);
+		c13.setBenefitAmount(4000D);
 		
 		CitizenInsurancePlan c14 = new CitizenInsurancePlan();
 		c14.setCitizenName("Mira");
@@ -171,7 +170,7 @@ public class DataLoader implements CommandLineRunner {
 		c15.setPlanStatus("Terminated");
 		c15.setStartDate(LocalDate.now().minusMonths(4));
 		c15.setEndDate(LocalDate.now().plusMonths(6));
-		c15.setBenefitAmount(5000);
+		c15.setBenefitAmount(5000D);
 		c15.setTerminationReason("Got employed");
 		c15.setTermintionDate(LocalDate.now());
 		
@@ -183,7 +182,7 @@ public class DataLoader implements CommandLineRunner {
 		c16.setPlanStatus("Approved");
 		c16.setStartDate(LocalDate.now().minusMonths(2));
 		c16.setEndDate(LocalDate.now().plusMonths(4));
-		c16.setBenefitAmount(5550);
+		c16.setBenefitAmount(5550D);
 		
 		List<CitizenInsurancePlan> list = Arrays.asList(c1, c2, c3, c4, c5, c6, c7, c8, c9, c10,c11, c12, c13, c14, c15,
 				c16);

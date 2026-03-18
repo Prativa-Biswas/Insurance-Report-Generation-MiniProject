@@ -11,6 +11,11 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import com.insurance.dto.SearchRequest;
 import com.insurance.service.CitizenPlanService;
 
+import jakarta.servlet.http.HttpServletResponse;
+
+import org.springframework.web.bind.annotation.RequestParam;
+
+
 @Controller
 @RequestMapping("/citizen")
 public class CitizenController {		
@@ -59,6 +64,28 @@ public class CitizenController {
 		init(model);
 		return "index";
 	}
+	
+	
+	@GetMapping("/excel")
+	public void getExcel(HttpServletResponse response) throws Exception {
+		
+		response.setContentType("application/octet-stream");
+		response.addHeader("Content-Disposition", "attachment;fileName=plans.xls");
+		service.exportExcel(response);
+		
+	}
+	
+	
+	@GetMapping("/pdf")
+	public void getPDF(HttpServletResponse response) throws Exception {
+		
+		response.setContentType("application/pdf");
+		response.addHeader("Content-Disposition", "attachment;fileName=plans.pdf");
+		service.exportPDF(response);
+		
+	}
+	
+	
 	
 	/**
 	 * Initializes model attributes required for the search form.
