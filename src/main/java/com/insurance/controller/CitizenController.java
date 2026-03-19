@@ -65,7 +65,11 @@ public class CitizenController {
 		return "index";
 	}
 	
-	
+	/**
+	 * The method is to Accept the excel downloading request & generate Excel 
+	 * @param response
+	 * @throws Exception
+	 */
 	@GetMapping("/excel")
 	public void getExcel(HttpServletResponse response) throws Exception {
 		
@@ -76,6 +80,11 @@ public class CitizenController {
 	}
 	
 	
+	/**
+	 * The method  is to Accept the PDF downloading request & generate PDF 
+	 * @param response
+	 * @throws Exception
+	 */
 	@GetMapping("/pdf")
 	public void getPDF(HttpServletResponse response) throws Exception {
 		
