@@ -113,6 +113,10 @@
    <hr/>
    
    <p>Export <a href="/citizen/excel"> Excel</a> &nbsp; &nbsp; <a href="/citizen/pdf"> PDF</a> </p>
+   <p><a href="/citizen/excel/mail">Send Excel to Email</a></p>
+      <p><a href="/citizen/pdf/mail">Send PDF  to Email</a></p>
+      <p style="color:green">${msg}</p>
+   
    
   </div>
   

@@ -5,15 +5,15 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.insurance.dto.SearchRequest;
 import com.insurance.service.CitizenPlanService;
 
 import jakarta.servlet.http.HttpServletResponse;
-
-import org.springframework.web.bind.annotation.RequestParam;
 
 
 @Controller
@@ -94,8 +94,34 @@ public class CitizenController {
 		
 	}
 	
-	
-	
+	/**
+	 * Handles email sending request for exporting reports in different formats (PDF/Excel).
+	 * The format type is received dynamically through the URL path variable.
+	 * Based on the selected type, the corresponding export service method is invoked.
+	 * After processing, the user is returned to the same page with a success message.
+	 *
+	 * @param type   the type of file to be sent via email (e.g., "pdf" or "excel")
+	 * @param search the search criteria used to filter the report data
+	 * @param model  the model object used to pass data and messages to the view
+	 * @return       the view name (index page) to be rendered after email is sent
+	 * @throws Exception if any error occurs during file generation or email sending
+	 */
+	@GetMapping("/{type}/mail")
+	public String  sendToMail(@PathVariable("type") String type,
+			@ModelAttribute("search")  SearchRequest search , 
+			Model model) throws Exception {
+				
+				   if("excel".equalsIgnoreCase(type)) {
+					service.exportExcelToEmail();}
+				   else if("pdf".equalsIgnoreCase(type)) {
+					   service.exportPdfToEmail();
+			   	}
+		
+				    init(model);
+	    model.addAttribute("msg", "Email Sent Successfully ✅");
+		return "index";
+	}
+		
 	/**
 	 * Initializes model attributes required for the search form.
 	 * 

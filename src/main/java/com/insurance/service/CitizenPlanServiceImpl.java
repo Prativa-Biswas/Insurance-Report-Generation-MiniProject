@@ -1,23 +1,10 @@
 package com.insurance.service;
 
+import java.io.File;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.util.List;
 
-import org.apache.poi.hssf.usermodel.HSSFWorkbook;
-import org.apache.poi.ss.usermodel.CellStyle;
-import org.apache.poi.ss.usermodel.FillPatternType;
-import org.apache.poi.ss.usermodel.Font;
-import org.apache.poi.ss.usermodel.Row;
-import org.apache.poi.ss.usermodel.Sheet;
-import org.apache.poi.ss.usermodel.Workbook;
-import org.openpdf.text.Document;
-import org.openpdf.text.Element;
-import org.openpdf.text.FontFactory;
-import org.openpdf.text.Paragraph;
-import org.openpdf.text.Phrase;
-import org.openpdf.text.pdf.PdfPTable;
-import org.openpdf.text.pdf.PdfWriter;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Example;
 import org.springframework.stereotype.Service;
@@ -25,10 +12,10 @@ import org.springframework.stereotype.Service;
 import com.insurance.dto.SearchRequest;
 import com.insurance.entity.CitizenInsurancePlan;
 import com.insurance.repository.CitizenInsuranceRepository;
+import com.insurance.utils.EmailUtils;
 import com.insurance.utils.ExcelGenerator;
 import com.insurance.utils.PDFGenerator;
 
-import jakarta.servlet.ServletOutputStream;
 import jakarta.servlet.http.HttpServletResponse;
 
 @Service
@@ -42,6 +29,8 @@ public class CitizenPlanServiceImpl implements CitizenPlanService {
 	
 	@Autowired
 	private PDFGenerator pdfGenerator;
+	@Autowired
+	private EmailUtils emailUtils;
 	
 	@Override
 	public List<String> getAllUniquePlanName() {
@@ -115,4 +104,37 @@ public class CitizenPlanServiceImpl implements CitizenPlanService {
 		return true;
 	}
 
+	
+	@Override
+	public Boolean exportExcelToEmail() throws Exception {
+
+		File file = new File("InsrusencePlan.xls");
+		List<CitizenInsurancePlan> citizenList = citizenRepo.findAll();
+		excelGenerator.generate(citizenList,file);
+
+		String subject= "Text email subject";
+		String body= "Text email Body";
+		String to= "prativabiswas104@gmail.com";	
+		emailUtils.sendEmail(subject, body, to, file);
+		file.delete();
+		
+		return true;
+	}
+	
+	@Override
+	public Boolean exportPdfToEmail() throws Exception {
+
+		File file = new File("InsrusencePlan.pdf");
+		List<CitizenInsurancePlan> citizenList = citizenRepo.findAll();
+		pdfGenerator.generate(citizenList,file);		
+		String subject= "Text email subject";
+		String body= "Text email Body";
+		String to= "prativabiswas104@gmail.com";
+
+		
+		emailUtils.sendEmail(subject, body, to, file);
+		file.delete();
+		
+		return true;
+	}
 }
