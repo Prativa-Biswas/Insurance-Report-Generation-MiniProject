@@ -14,4 +14,7 @@ public interface CitizenPlanService {
 	public List<CitizenInsurancePlan>  getAllCitizenRecord(SearchRequest req);
 	public Boolean exportExcel(HttpServletResponse response) throws Exception;
 	public Boolean exportPDF(HttpServletResponse response) throws Exception;
+	
+	public Boolean exportExcelToEmail() throws Exception;
+	public Boolean exportPdfToEmail() throws Exception;
 }
