@@ -1,10 +1,13 @@
 package com.insurance.utils;
 
 import java.io.File;
+import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
+import java.io.IOException;
 import java.util.List;
 
 import org.openpdf.text.Document;
+import org.openpdf.text.DocumentException;
 import org.openpdf.text.Element;
 import org.openpdf.text.Font;
 import org.openpdf.text.FontFactory;
@@ -22,7 +25,7 @@ import jakarta.servlet.http.HttpServletResponse;
 @Component
 public class PDFGenerator {
 	
-	public void generate(HttpServletResponse response, List<CitizenInsurancePlan> citizenList ) throws Exception{
+	public void generate(HttpServletResponse response, List<CitizenInsurancePlan> citizenList ) throws DocumentException, IOException {
 	
 		Document document = new Document(PageSize.A4);
 		PdfWriter.getInstance(document, response.getOutputStream());	   	
@@ -87,7 +90,7 @@ public class PDFGenerator {
 	}
 	
 	
-	public void generate(List<CitizenInsurancePlan> citizenList , File file) throws Exception{
+	public void generate(List<CitizenInsurancePlan> citizenList , File file) throws DocumentException, FileNotFoundException {
 		
 		Document document = new Document();
 		PdfWriter.getInstance(document, new FileOutputStream(file));

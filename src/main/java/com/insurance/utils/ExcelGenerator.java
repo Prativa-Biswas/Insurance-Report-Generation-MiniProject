@@ -2,6 +2,7 @@ package com.insurance.utils;
 
 import java.io.File;
 import java.io.FileOutputStream;
+import java.io.IOException;
 import java.util.List;
 
 import org.apache.poi.hssf.usermodel.HSSFWorkbook;
@@ -11,17 +12,19 @@ import org.apache.poi.ss.usermodel.Font;
 import org.apache.poi.ss.usermodel.Row;
 import org.apache.poi.ss.usermodel.Sheet;
 import org.apache.poi.ss.usermodel.Workbook;
+import org.springframework.mail.MailException;
 import org.springframework.stereotype.Component;
 
 import com.insurance.entity.CitizenInsurancePlan;
 
+import jakarta.mail.MessagingException;
 import jakarta.servlet.ServletOutputStream;
 import jakarta.servlet.http.HttpServletResponse;
 
 @Component
 public class ExcelGenerator {
 	
-public void generate(HttpServletResponse response, List<CitizenInsurancePlan> citizenList ) throws Exception{
+public void generate(HttpServletResponse response, List<CitizenInsurancePlan> citizenList ) throws IOException{
 		
         Workbook workbook= new HSSFWorkbook();
 		
@@ -120,7 +123,7 @@ public void generate(HttpServletResponse response, List<CitizenInsurancePlan> ci
 	}
 
 
-public void generate(List<CitizenInsurancePlan> citizenList , File file) throws Exception{
+public void generate(List<CitizenInsurancePlan> citizenList , File file) throws IOException{
 	
     Workbook workbook= new HSSFWorkbook();
 	
@@ -215,7 +218,8 @@ public void generate(List<CitizenInsurancePlan> citizenList , File file) throws 
 	FileOutputStream outputStream= new FileOutputStream(file);
 	workbook.write(outputStream);
 	workbook.close();
-	
+	outputStream.close();
+
 }
 
 
