@@ -8,10 +8,10 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.insurance.dto.SearchRequest;
 import com.insurance.service.CitizenPlanService;
+import com.insurance.utils.AppConstants;
 
 import jakarta.servlet.http.HttpServletResponse;
 
@@ -48,7 +48,7 @@ public class CitizenController {
 		init(model);
 
 		
-		return "index";
+		return AppConstants.INDEX;
 	}
 
 	/**
@@ -62,7 +62,7 @@ public class CitizenController {
 			
 		model.addAttribute("citizenData",service.getAllCitizenRecord(search));
 		init(model);
-		return "index";
+		return AppConstants.INDEX;
 	}
 	
 	/**
@@ -119,7 +119,7 @@ public class CitizenController {
 		
 				    init(model);
 	    model.addAttribute("msg", "Email Sent Successfully ✅");
-		return "index";
+		return AppConstants.INDEX;
 	}
 		
 	/**

@@ -2,20 +2,26 @@ package com.insurance.utils;
 
 import java.io.File;
 
-import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.mail.MailException;
 import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.mail.javamail.MimeMessageHelper;
 import org.springframework.stereotype.Component;
 
+import com.insurance.exception.EmailSendingException;
+
+import jakarta.mail.MessagingException;
 import jakarta.mail.internet.MimeMessage;
 
 @Component
 public class EmailUtils {
 	
-	@Autowired
 	private JavaMailSender mailSender;
 	
-	public boolean sendEmail( String subject, String body, String toAddress, File file) 
+	 public EmailUtils(JavaMailSender mailSender) {
+	        this.mailSender = mailSender;
+	    }
+	
+	public void sendEmail( String subject, String body, String toAddress, File file) 
 	{
 		try {
 		MimeMessage mimeMessage = mailSender.createMimeMessage();		
@@ -27,13 +33,10 @@ public class EmailUtils {
 		mailSender.send(mimeMessage);
 		
 		}
-		catch(Exception e)
-		{
-			e.printStackTrace();
-			return false;
-		}
-		
-		return true;
+	    catch (MessagingException | MailException e) {
+         throw new EmailSendingException("Failed to send email", e);
+         
+     }
 	}
 
 }
